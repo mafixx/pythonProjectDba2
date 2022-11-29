@@ -69,3 +69,24 @@ if __name__ == "__main__":
     )
     """
     conexao.execute(comando)
+
+    # Criação da tabela tb_postagens_categoria
+    # Nesse caso, temos uma relação de N:N
+    comando = """
+    CREATE TABLE IF NOT EXISTS tb_categorias(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nome TEXT NOT NULL
+    )
+    """
+    conexao.execute(comando)
+
+    comando = """
+    CREATE TABLE IF NOT EXISTS tb_postagens_categorias(
+        id_postagem INTEGER NOT NULL,
+        id_categoria INTEGER NOT NULL,
+        PRIMARY KEY (id_postagem, id_categoria),
+        FOREIGN KEY (id_postagem) REFERENCES tb_postagens (id),
+        FOREIGN KEY (id_categoria) REFERENCES tb_categorias (id)
+    )
+    """
+    conexao.execute(comando)
