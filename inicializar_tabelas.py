@@ -90,3 +90,8 @@ if __name__ == "__main__":
     )
     """
     conexao.execute(comando)
+
+    # Criação da tabela tb_comentarios
+    # id (integer, primaria e autoincrementada),
+    # id_usuario (integer, chave estrangeira not null)
+    # e texto (texto comum not null)
